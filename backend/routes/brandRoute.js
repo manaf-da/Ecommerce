@@ -7,7 +7,7 @@ const {
   deleteCategory,
   getACategory,
   getAllCategory,
-} = require("../controller/productCategoryController.js");
+} = require("../controller/brandController");
 
 router.post("/", authMiddleware, isAdmin, createCategory);
 router.put("/:id", authMiddleware, isAdmin, updateCategory);
