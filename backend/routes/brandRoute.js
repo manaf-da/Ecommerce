@@ -2,17 +2,17 @@ const express = require("express");
 const router = express.Router();
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 const {
-  createCategory,
-  updateCategory,
-  deleteCategory,
-  getACategory,
-  getAllCategory,
+  createBrand,
+  updateBrand,
+  deleteBrand,
+  getABrand,
+  getAllBrand,
 } = require("../controller/brandController");
 
-router.post("/", authMiddleware, isAdmin, createCategory);
-router.put("/:id", authMiddleware, isAdmin, updateCategory);
-router.delete("/:id", authMiddleware, isAdmin, deleteCategory);
-router.get("/:id", getACategory);
-router.get("/", getAllCategory);
+router.post("/", authMiddleware, isAdmin, createBrand);
+router.put("/:id", authMiddleware, isAdmin, updateBrand);
+router.delete("/:id", authMiddleware, isAdmin, deleteBrand);
+router.get("/:id", getABrand);
+router.get("/", getAllBrand);
 
 module.exports = router;
