@@ -8,8 +8,19 @@ const {
   deleteBlog,
   likeBlog,
   disLikeBlog,
+  uploadImages,
 } = require("../controller/blogController.js");
+const { uploadPhoto, blogImgResize } = require("../middlewares/uploadImages");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
+
+router.put(
+  "/upload/:id",
+  authMiddleware,
+  isAdmin,
+  uploadPhoto.array("images", 10),
+  blogImgResize,
+  uploadImages
+);
 
 router.post("/", authMiddleware, isAdmin, createBlog);
 router.put("/likes", authMiddleware, likeBlog);

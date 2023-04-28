@@ -2,6 +2,8 @@ const Blog = require("../models/blogModel");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const validateMongoDbId = require("../utility/validateMongodb");
+const cloudinaryUploadImg = require("../utility/cloudinary");
+const fs = require("fs");
 
 const createBlog = asyncHandler(async (req, res) => {
   try {
@@ -213,4 +215,5 @@ module.exports = {
   deleteBlog,
   likeBlog,
   disLikeBlog,
+  uploadImages,
 };

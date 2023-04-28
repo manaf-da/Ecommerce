@@ -20,6 +20,8 @@ const createUser = asyncHandler(async (req, res) => {
   }
 });
 
+//Login a user
+
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   // check if user exists
@@ -49,6 +51,7 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid Credentials");
   }
 });
+
 //handle refresh Token
 const handleRefreshToken = asyncHandler(async (req, res) => {
   const cookie = req.cookies;
