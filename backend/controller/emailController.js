@@ -10,6 +10,7 @@ const sendEmail = asyncHandler(async (data, req, res) => {
     auth: {
       user: process.env.MAIL_ID, // generated ethereal user
       pass: process.env.MP, // generated ethereal password
+      //TODO:Need to provide the password
     },
   });
 
