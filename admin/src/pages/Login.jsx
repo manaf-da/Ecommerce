@@ -1,63 +1,72 @@
-import React from "react";
+import CustomInputs from "../components/CustomInputs";
+import { Link } from "react-router-dom";
 
-const Login = () => {
+const SignIn = () => {
   return (
-    <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-lg">
-        <form
-          action=""
-          className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
-        >
-          {" "}
-          <h1 className="text-center text-2xl font-bold   text-[#141414] sm:text-3xl">
-            Get started today
-          </h1>
-          <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
-            Login with your account to continue
-          </p>
-          <div>
-            <label for="email" className="sr-only">
-              Email
-            </label>
+    <>
+      <div className="max-w-screen-2xl px-4 py-8 mx-auto sm:px-6 sm:py-1 lg:px-8 drop-shadow-lg">
+        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-md">
+            <form action="" className="mt-10 mb-0 space-y-4  p-8 shadow-2xl">
+              <h1 className="text-left text-2xl font-semibold text-[#333333] sm:text-3xl">
+                Sign In
+              </h1>
 
-            <div className="relative">
-              <input
-                type="email"
-                className="w-full  border-gray-200 p-2 pe-12 text-sm   "
-                placeholder="Enter email"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="password" className="sr-only">
-              Password
-            </label>
+              <p className="mx-auto mt-4 max-w-md text-left text-gray-500">
+                Login with your account to continue
+              </p>
+              <div className="relative mt-1">
+                <label
+                  htmlFor="email"
+                  className="block text-sm mb-3 font-medium text-gray-700"
+                >
+                  Email
+                </label>
+                <CustomInputs
+                  type="email"
+                  name="email"
+                  className="w-full  border-gray-100 p-2 text-sm shadow-md"
+                  placeholder="Enter email"
+                />
+              </div>
 
-            <div className="relative">
-              <input
-                type="password"
-                className="w-full  border-gray-200 p-2 pe-12 text-sm shadow-sm "
-                placeholder="Enter password"
-              />
-            </div>
+              <div className="relative mt-1">
+                <label
+                  htmlFor="email"
+                  className="block text-sm mb-3 font-medium text-gray-700"
+                >
+                  Password
+                </label>
+                <CustomInputs
+                  type="password"
+                  name="password"
+                  className="w-full  border-gray-100 p-2  text-sm shadow-md"
+                  placeholder=" Password"
+                />
+              </div>
+              <div className="mb-3 text-end">
+                <Link
+                  to="/forgot-password"
+                  className="text-sm text-[#425FED] underline font-semibold"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
+
+              <div className="flex justify-center">
+                <Link
+                  to="/admin"
+                  className=" w-full bg-[#333333] px-6 font-semibold py-2 text-sm text-center   text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-[#333333]"
+                >
+                  Sign In
+                </Link>
+              </div>
+            </form>
           </div>
-          <div className="flex "></div>
-          <button
-            type="submit"
-            className="block w-full   bg-[#141414] p-2 text-sm font-medium text-white"
-          >
-            Sign in
-          </button>
-          <p className="text-center text-sm text-gray-500">
-            No account?
-            <a className="underline" href="">
-              Sign up
-            </a>
-          </p>
-        </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default Login;
+export default SignIn;

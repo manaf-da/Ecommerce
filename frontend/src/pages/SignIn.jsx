@@ -21,7 +21,7 @@ const SignIn = () => {
                 <CustomInputs
                   type="email"
                   name="email"
-                  className="w-full  border-gray-100 p-2 text-sm shadow-md"
+                  className="w-full  border-gray-100 p-3 text-sm shadow-md"
                   placeholder="Enter email"
                 />
               </div>
@@ -30,13 +30,13 @@ const SignIn = () => {
                 <CustomInputs
                   type="password"
                   name="password"
-                  className="w-full  border-gray-100 p-2  text-sm shadow-md"
+                  className="w-full  border-gray-100 p-3  text-sm shadow-md"
                   placeholder=" Password"
                 />
               </div>
 
               <div className="flex justify-center">
-                <button className=" rounded bg-[#333333] px-6 font-semibold py-2 text-sm   text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-[#333333]">
+                <button className=" rounded bg-[#333333] px-6 font-semibold py-3 text-sm   text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-[#333333]">
                   Sign In
                 </button>
               </div>
