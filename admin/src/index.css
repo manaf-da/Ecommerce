@@ -15,19 +15,15 @@
   min-width: 80px !important;
   width: 80px !important;
 }
+main::-webkit-scrollbar {
+  width: 0px;
+}
 
-.ant-menu-item-icon {
-  font-size: 25px !important;
-}
-.ant-layout-header {
-  height: 40px;
-  display: flex !important;
-  justify-items: center !important;
-  align-items: center;
-}
 .ant-btn {
-  font-size: 25px;
+  font-size: 24px;
+  width: 64px;
+  height: 64px;
 }
-.main {
-  overflow-y: scroll;
+.quill {
+  background-color: white;
 }
