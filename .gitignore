@@ -1,4 +1,5 @@
 backend/package-lock.json
 node_modules/
-.env
+.env/
 backend/index.js
+admin/src/components/MainLayout.jsx
