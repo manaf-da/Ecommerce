@@ -19,6 +19,7 @@ import AddColor from "./pages/AddColor";
 import AddCategory from "./pages/AddCategory";
 import AddBrand from "./pages/AddBrand";
 import AddProduct from "./pages/AddProduct";
+import ProductCatList from "./pages/ProductCatList";
 
 const App = () => {
   return (
@@ -38,7 +39,7 @@ const App = () => {
           <Route path="customers" element={<Customers />} />
           <Route path="color-list" element={<ColorList />} />
           <Route path="color" element={<AddColor />} />
-          <Route path="category-list" element={<CategoryList />} />
+          <Route path="product-category-list" element={<ProductCatList />} />
           <Route path="category" element={<AddCategory />} />
           <Route path="brand-list" element={<BrandList />} />
           <Route path="brand" element={<AddBrand />} />

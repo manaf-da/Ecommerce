@@ -1,5 +1,10 @@
-import React from "react";
+import { useEffect } from "react";
 import { Table } from "antd";
+import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineDelete } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { getBlogs } from "../features/blogs/blogSlice";
 
 const columns = [
   {
@@ -7,32 +12,51 @@ const columns = [
     dataIndex: "key",
   },
   {
-    title: "Name",
-    dataIndex: "name",
+    title: "Title",
+    dataIndex: "title",
+    sorter: (a, b) => a.title.length - b.title.length,
   },
   {
-    title: "Product",
-    dataIndex: "product",
+    title: "Category",
+    dataIndex: "category",
+    sorter: (a, b) => a.title.length - b.title.length,
   },
   {
-    title: "Status",
-    dataIndex: "status",
+    title: "Actions",
+    dataIndex: "action",
   },
 ];
-const data1 = [];
-for (let i = 0; i < 46; i++) {
-  data1.push({
-    key: i,
-    name: `Edward King ${i}`,
-    product: 32,
-    status: `London, Park Lane no. ${i}`,
-  });
-}
 
 const BlogList = () => {
+  const dispatch = useDispatch();
+  const blogState = useSelector((state) => state.blogs.blogs);
+
+  useEffect(() => {
+    dispatch(getBlogs());
+  }, [dispatch]);
+
+  const data1 = [];
+  for (let i = 0; i < blogState.length; i++) {
+    data1.push({
+      key: i + 1,
+      title: blogState[i].title,
+      category: blogState[i].category,
+      action: (
+        <div className="flex space-x-4 text-xl">
+          <Link to="/">
+            <AiOutlineEdit className="text-[#023e8a]" />
+          </Link>
+          <Link to="/">
+            <AiOutlineDelete className="text-[#e71d36]" />
+          </Link>
+        </div>
+      ),
+    });
+  }
+
   return (
     <div>
-      <h3>Blogs Lists</h3>
+      <h3>Customers </h3>
       <div>
         <Table columns={columns} dataSource={data1} />
       </div>

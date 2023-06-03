@@ -80,9 +80,9 @@ const MainLayout = () => {
                   label: "Add Category",
                 },
                 {
-                  key: "category-list",
+                  key: "product-category-list",
                   icon: <BiCategoryAlt />,
-                  label: "Category List",
+                  label: "Product Category List",
                 },
                 {
                   key: "color",
