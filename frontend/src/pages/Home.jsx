@@ -9,66 +9,65 @@ import { services } from "../utility/Data";
 import { slides } from "../utility/Data";
 
 const Home = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentPicture, setCurrentPicture] = useState(0);
 
   const prev = () => {
-    const firstSlide = currentIndex === 0;
-    const newIndex = firstSlide ? slides.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
+    setCurrentPicture((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
   const next = () => {
-    const lastSlide = currentIndex === slides.length - 1;
-    const newIndex = lastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
+    setCurrentPicture((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
-  const dotSlides = (slideIndex) => {
-    setCurrentIndex(slideIndex);
+  const dotSlides = (index) => {
+    setCurrentPicture(index);
   };
 
   return (
     <>
       <div className="max-w-screen-2xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8 drop-shadow-lg ">
-        <div className=" max-w-[1800px] h-[780px] m-auto py-16 px-4 relative group">
+        <div className="max-w-[1800px] h-[780px] m-auto py-16 px-4 relative group">
           <div
-            style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-            className="w-full h-full rounded  bg-center bg-cover duration-600"
+            style={{ backgroundImage: `url(${slides[currentPicture].url})` }}
+            className="w-full h-full rounded bg-center bg-cover duration-600"
           ></div>
-          <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-4 text-2xl rounded-full p-2 bg-black/30 text-white cursor-pointer">
-            <BsChevronLeft onClick={prev} size={30} />
+          <div
+            className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-4 text-2xl rounded-full p-2 bg-black/30 text-white cursor-pointer"
+            onClick={prev}
+          >
+            <BsChevronLeft size={30} />
           </div>
-          <div className="hidden group-hover:block  absolute top-[50%] -translate-x-0 translate-y-[-50%] right-4 text-2xl rounded-full p-2 bg-black/30 text-white cursor-pointer">
-            <BsChevronRight onClick={next} size={30} />
+          <div
+            className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-4 text-2xl rounded-full p-2 bg-black/30 text-white cursor-pointer"
+            onClick={next}
+          >
+            <BsChevronRight size={30} />
           </div>
           <div className="flex top-4 justify-center py-2">
-            {slides.map((slide, slideIndex) => (
+            {slides.map((slide, index) => (
               <div
-                key={slideIndex}
-                onClick={() => dotSlides(slideIndex)}
-                className=" text-2xl cursor-pointer  "
+                key={index}
+                onClick={() => dotSlides(index)}
+                className="text-2xl cursor-pointer"
               >
-                <RxDotFilled className="text-black/30 " />
+                <RxDotFilled className="text-black/30" />
               </div>
             ))}
           </div>
         </div>
 
-        <section className="  bg-white flex p-4 mb-4 justify-between  drop-shadow-lg ">
-          {services.map((service, index) => {
-            return (
-              <>
-                <div key={index} className="flex items-center gap-2 ">
-                  <img src={service.image} alt="services" />
-                  <div>
-                    <h6 className="font-semibold text-base">{service.title}</h6>
-                    <span className="mb-0 text-sm">{service.description}</span>
-                  </div>
-                </div>
-              </>
-            );
-          })}
+        <section className="bg-white flex p-4 mb-4 justify-between drop-shadow-lg">
+          {services.map((service, index) => (
+            <div key={index} className="flex items-center gap-2">
+              <img src={service.image} alt="services" />
+              <div>
+                <h6 className="font-semibold text-base">{service.title}</h6>
+                <span className="mb-0 text-sm">{service.description}</span>
+              </div>
+            </div>
+          ))}
         </section>
+
         <section className=" p-4  bg-white drop-shadow-lg flex flex-wrap justify-center   mb-4 item-center ">
           <div className="flex  items-center  w-1/5  border-b border-r">
             <img

@@ -1,6 +1,6 @@
 import CustomInputs from "../components/CustomInputs";
 
-const ForgotPassword = () => {
+const ResetPassword = () => {
   return (
     <>
       <div className="max-w-screen-2xl px-4 py-8 mx-auto sm:px-6 sm:py-1 lg:px-8 drop-shadow-lg">
@@ -45,4 +45,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default ResetPassword;

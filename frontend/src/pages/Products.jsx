@@ -1,10 +1,21 @@
-import React from "react";
+import { useState } from "react";
 import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
 import ReactStars from "react-rating-stars-component";
 import ProductCard from "../components/ProductCard";
+import {
+  HiOutlineBars2,
+  HiOutlineBars3,
+  HiOutlineBars4,
+  HiOutlineBars3CenterLeft,
+} from "react-icons/hi2";
 
 const Products = () => {
+  const [grid, setGrid] = useState(4);
+
+  const handleGridChange = (gridValue) => {
+    setGrid(gridValue);
+  };
   return (
     <>
       <Meta title={"Products"} />
@@ -320,73 +331,34 @@ const Products = () => {
                 </div>
               </div>
             </div>
+
             <div className="lg:col-span-3">
-              <div className="max-w-screen-2xl  mx-auto drop-shadow-lg sm:px-10 sm:py-1 lg:px-8 ">
+              <div className=" w-full mx-auto drop-shadow-lg sm:px-10 sm:py-1 lg:px-1 ">
                 <div className="flex items-center justify-between bg-white  p-5 mb-4 ">
                   <div className="flex  rounded  items-center">
-                    <button className=" border border-gray-100  divide-gray-100 inline-flex items-center justify-center w-10 h-10 text-gray-600 transition hover:bg-gray-50 hover:text-gray-700">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="w-5 h-5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
-                        />
-                      </svg>
+                    <button
+                      className=" border border-gray-100  divide-gray-100 inline-flex items-center justify-center w-10 h-10 text-gray-600 transition hover:bg-gray-50 hover:text-gray-700"
+                      onClick={() => handleGridChange(4)}
+                    >
+                      <HiOutlineBars4 />
                     </button>
-                    <button className=" border border-gray-100  divide-gray-100 inline-flex items-center justify-center w-10 h-10 text-gray-600 transition hover:bg-gray-50 hover:text-gray-700">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="w-5 h-5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                        />
-                      </svg>
+                    <button
+                      className=" border border-gray-100  divide-gray-100 inline-flex items-center justify-center w-10 h-10 text-gray-600 transition hover:bg-gray-50 hover:text-gray-700"
+                      onClick={() => handleGridChange(3)}
+                    >
+                      <HiOutlineBars3 />
                     </button>
-                    <button className="border border-gray-100  inline-flex items-center justify-center w-10 h-10 text-gray-600 transition hover:bg-gray-50 hover:text-gray-700">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="w-5 h-5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M3.75 9h16.5m-16.5 6.75h16.5"
-                        />
-                      </svg>
+                    <button
+                      className="border border-gray-100  inline-flex items-center justify-center w-10 h-10 text-gray-600 transition hover:bg-gray-50 hover:text-gray-700"
+                      onClick={() => handleGridChange(2)}
+                    >
+                      <HiOutlineBars2 />
                     </button>
-                    <button className="border border-gray-100  inline-flex items-center justify-center w-10 h-10 text-gray-600 transition hover:bg-gray-50 hover:text-gray-700">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="w-5 h-5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
-                        />
-                      </svg>
+                    <button
+                      className="border border-gray-100  inline-flex items-center justify-center w-10 h-10 text-gray-600 transition hover:bg-gray-50 hover:text-gray-700"
+                      onClick={() => handleGridChange(1)}
+                    >
+                      <HiOutlineBars3CenterLeft />
                     </button>
                     <div>
                       <span className="whitespace-nowrap bg-gray-100 px-2.5 py-0.5 text-xs text-gray-400">
@@ -418,17 +390,13 @@ const Products = () => {
                   </div>
                 </div>
               </div>
-              <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <li>
-                  <ProductCard />
-                </li>
-                <li>
-                  <ProductCard />
-                </li>
-                <li>
-                  <ProductCard />
-                </li>
-              </ul>
+              <div className=" pb-5">
+                <div className="flex gap-10 flex-wrap">
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

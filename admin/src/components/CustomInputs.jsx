@@ -6,10 +6,9 @@ const CustomInputs = (props) => {
       <label htmlFor={label}>{label}</label>
       <input
         type={type}
-        id={id}
+        name={name}
         className={className}
         placeholder={placeholder}
-        name={name}
         value={value}
         onChange={onChange}
       />
