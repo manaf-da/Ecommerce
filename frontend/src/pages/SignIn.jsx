@@ -2,9 +2,33 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
-import CustomInputs from "../components/CustomInputs";
+import CustomInputs from "../Components/CustomInputs";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { useDispatch } from "react-redux";
+import { signInUser } from "./../features/user/userSlice";
+
+const signInSchema = yup.object({
+  email: yup
+    .string()
+    .email("Email should be valid")
+    .required("Email is required"),
+  password: yup.string().required("Password is required"),
+});
 
 const SignIn = () => {
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: signInSchema,
+    onSubmit: async (values) => {
+      dispatch(signInUser(values));
+    },
+  });
+
   return (
     <>
       <Meta title={"Sign In"} />
@@ -16,14 +40,25 @@ const SignIn = () => {
               Sign In
             </h1>
 
-            <form action="" className="mt-10 mb-0 space-y-4  p-8 shadow-2xl">
+            <form
+              action=""
+              onSubmit={formik.handleSubmit}
+              className="mt-10 mb-0 space-y-4  p-8 shadow-2xl"
+            >
               <div className="relative mt-1">
                 <CustomInputs
                   type="email"
                   name="email"
                   className="w-full  border-gray-100 p-3 text-sm shadow-md"
                   placeholder="Enter email"
+                  onChange={formik.handleChange}
+                  values={formik.values.email}
                 />
+                {formik.touched.email && formik.errors.email && (
+                  <div className="text-red-600 text-xs mt-2">
+                    {formik.errors.email}
+                  </div>
+                )}
               </div>
 
               <div className="relative mt-1">
@@ -32,6 +67,8 @@ const SignIn = () => {
                   name="password"
                   className="w-full  border-gray-100 p-3  text-sm shadow-md"
                   placeholder=" Password"
+                  onChange={formik.handleChange}
+                  values={formik.values.password}
                 />
               </div>
 

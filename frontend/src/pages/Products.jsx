@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
 import ReactStars from "react-rating-stars-component";
@@ -9,9 +9,21 @@ import {
   HiOutlineBars4,
   HiOutlineBars3CenterLeft,
 } from "react-icons/hi2";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../features/products/productsSlice";
 
 const Products = () => {
   const [grid, setGrid] = useState(4);
+  const dispatch = useDispatch();
+  const productState = useSelector((state) => state.product.product);
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
+  const getAllProducts = () => {
+    dispatch(getProducts());
+  };
 
   const handleGridChange = (gridValue) => {
     setGrid(gridValue);
@@ -392,9 +404,7 @@ const Products = () => {
               </div>
               <div className=" pb-5">
                 <div className="flex gap-10 flex-wrap">
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
+                  <ProductCard data={productState} grid={grid} />
                 </div>
               </div>
             </div>

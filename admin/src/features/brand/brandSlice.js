@@ -23,7 +23,7 @@ const initialState = {
 export const brandSlice = createSlice({
   name: "brands",
   initialState,
-  reducers: {}, // <- Update "reducer" to "reducers"
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getBrands.pending, (state) => {

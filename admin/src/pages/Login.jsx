@@ -6,9 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/auth/authSlice";
 import { useEffect } from "react";
 
-let userSchema = yup.object({
-  email: yup.string().email("valid email please").required("Email is Required"),
-  password: yup.string().required("Password is Required"),
+let signUpSchema = yup.object({
+  firstName: yup.string().required("firstName is required"),
+  lastName: yup.string().required("lastName is required"),
+  mobile: yup.string().required("mobile is required"),
+  email: yup.string().nullable().email("Email should be valid"),
+  password: yup.string().required("password is required"),
 });
 
 const SignIn = () => {
@@ -17,10 +20,13 @@ const SignIn = () => {
 
   const formik = useFormik({
     initialValues: {
+      firstName: "",
+      lastName: "",
+      mobile: "",
       email: "",
       password: "",
     },
-    validationSchema: userSchema,
+    validationSchema: signUpSchema,
     onSubmit: (values) => {
       dispatch(login(values));
     },
@@ -70,7 +76,6 @@ const SignIn = () => {
                   placeholder="Enter email"
                   onChange={formik.handleChange("email")}
                   value={formik.values.email}
-                  onBlur={formik.values.email}
                 />
                 <div className="text-red-600 text-xs mt-2">
                   {formik.touched.email && formik.errors.email ? (

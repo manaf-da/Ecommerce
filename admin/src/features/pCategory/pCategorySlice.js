@@ -18,6 +18,7 @@ const initialState = {
   pCategories: [],
   isLoading: false,
   isError: false,
+  isSuccess: false,
   errorMessage: "",
 };
 
@@ -35,11 +36,13 @@ const pCategorySlice = createSlice({
       .addCase(getProductCategories.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
+        state.isSuccess = true;
         state.pCategories = action.payload;
       })
       .addCase(getProductCategories.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSuccess = false;
         state.errorMessage = action.error.message;
       });
   },
