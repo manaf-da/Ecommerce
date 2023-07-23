@@ -5,6 +5,7 @@ const getProducts = async (userData) => {
   const response = await axios.get(`${baseUrl}product`);
   if (response.data) return response.data;
 };
+
 const addToWishlist = async (prodId) => {
   const response = await axios.put(
     `${baseUrl}product/wishlist`,

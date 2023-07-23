@@ -28,6 +28,7 @@ const ProductCard = (props) => {
   const dispatch = useDispatch();
 
   const addToWish = (id) => {
+    console.log(id);
     dispatch(addToWishlist(id));
   };
 

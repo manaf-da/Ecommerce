@@ -51,7 +51,7 @@ const SignIn = () => {
           <div className="mx-auto max-w-md">
             <form
               action=""
-              onSubmit={formik.handleSubmit}
+              onClick={formik.handleSubmit}
               className="mt-10 mb-0 space-y-4  p-8 shadow-2xl"
             >
               <h1 className="text-left text-2xl font-semibold text-[#333333] sm:text-3xl">
@@ -115,7 +115,10 @@ const SignIn = () => {
               </div>
 
               <div className="flex justify-center">
-                <button className=" w-full bg-[#333333] px-6 font-semibold py-2 text-sm text-center   text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-[#333333]">
+                <button
+                  type="button"
+                  className=" w-full bg-[#333333] px-6 font-semibold py-2 text-sm text-center   text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-[#333333]"
+                >
                   Sign In
                 </button>
               </div>
